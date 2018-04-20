@@ -6,11 +6,21 @@ public final class CampingClothes extends Stuff {
     private String size;
     private String colour;
 
-    public CampingClothes(final String name, final String producer, final int weight, final String material, final double price, final String size, final String colour, final ClothesType clothestype) {
-        super(name, producer, weight, material, price, StuffType.CAMPINGCLOTHES);
+    public CampingClothes(final Integer id, final String name, final String producer, final int weight, final String material, final double price, final String size, final String colour, final ClothesType clothestype) {
+        super(id, name, producer, weight, material, price, StuffType.CAMPINGCLOTHES);
         this.size = size;
         this.colour = colour;
 
+    }
+
+    @Override
+    public String getHeaders() {
+        return super.getHeaders() + "size," + "colour";
+    }
+
+    @Override
+    public String toSCV() {
+        return super.toSCV() + size + "," + colour;
     }
 
     public String toString() {

@@ -1,11 +1,8 @@
 package shop;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
-public final class ShopManager {
+public class ShopManager {
 
     class StuffTypeComparator implements Comparator<Stuff> {
 
@@ -15,25 +12,32 @@ public final class ShopManager {
         }
     }
 
-    private List<Stuff> stuffList = new LinkedList<>();
-
-    public void addStuffList(final Stuff newStuff) {
-        stuffList.add(newStuff);
+    public ShopManager(){
     }
 
-    public List<Stuff> getStuffList() {
+    public static Map<Integer, Stuff> getStuffMap() {
+        return stuffMap;
+    }
+
+    public static void setStuffMap(Map<Integer, Stuff> stuffMap) {
+        ShopManager.stuffMap = stuffMap;
+    }
+
+    private static Map<Integer, Stuff> stuffMap = new HashMap<>();
+
+    public void addStuffList(final Stuff newStuff) {
+        stuffMap.put(newStuff.getId(), newStuff);
+    }
+
+
+    public List<Stuff> sortByProducer(List<Stuff> stuffList) {
+
+        Collections.sort(stuffList, new StuffTypeComparator());
         return stuffList;
     }
 
-    public void sortByProducer() {
-
-        Collections.sort(stuffList, new StuffTypeComparator());
-
-    }
-
-
-    public void sortByWeight(final List<Stuff> stuffListToSort) {
+    public List<Stuff> sortByWeight(final List<Stuff> stuffListToSort) {
         stuffListToSort.sort((sortStuff1, sortStuff2) -> sortStuff1.getWeight() - sortStuff2.getWeight());
-
+        return stuffListToSort;
     }
 }

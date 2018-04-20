@@ -6,10 +6,20 @@ public final class CampStove extends Stuff {
     private TypeOfFuel fuelType;
     private double heatOutput;
 
-    public CampStove(final String name, final String producer, final int weight, final String material, final double price, final double volumeOfGasBalone, final double heatOutput) {
-        super(name, producer, weight, material, price, StuffType.CAMPSTOVE);
+    public CampStove(final Integer id,  final String name, final String producer, final int weight, final String material, final double price, final double volumeOfGasBalone, final double heatOutput, final TypeOfFuel fuelType) {
+        super(id, name, producer, weight, material, price, StuffType.CAMPSTOVE);
         this.volumeOfGasBalone = volumeOfGasBalone;
         this.heatOutput = heatOutput;
+    }
+
+    @Override
+    public String getHeaders() {
+        return super.getHeaders() + "volumeOfGasBalone," + "heatOutput";
+    }
+
+    @Override
+    public String toSCV() {
+        return super.toSCV() + volumeOfGasBalone + "," + heatOutput;
     }
 
     public String toString() {

@@ -6,11 +6,21 @@ public final class CampCooler extends Stuff {
     private String colour;
     private SidesType coolerType;
 
-    public CampCooler(final String name, final String producer, final int weight, final String material, final double price, final double capacity, final String colour, final SidesType coolerType) {
-        super(name, producer, weight, material, price, StuffType.CAMPCOOLER);
+    public CampCooler(final Integer id, final String name, final String producer, final int weight, final String material, final double price, final double capacity, final String colour, final SidesType coolerType) {
+        super(id, name, producer, weight, material, price, StuffType.CAMPCOOLER);
         this.capacity = capacity;
         this.colour = colour;
 
+    }
+
+    @Override
+    public String getHeaders() {
+        return super.getHeaders() + "capacity," + "colour";
+    }
+
+    @Override
+    public String toSCV() {
+        return super.toSCV() + capacity + "," + colour;
     }
 
     public String toString() {

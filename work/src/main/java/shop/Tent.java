@@ -7,12 +7,22 @@ public final class Tent extends Stuff {
     private int sleepingCapacity;
     private int numberOfDoors;
 
-    public Tent(final String name, final String producer, final int weight, final String material, final double price, final String colour, final int sleepingCapacity, final int numberOfDoors) {
-        super(name, producer, weight, material, price, StuffType.TENT);
+    public Tent(final Integer id, final String name, final String producer, final int weight, final String material, final double price, final String colour, final int sleepingCapacity, final int numberOfDoors) {
+        super(id, name, producer, weight, material, price, StuffType.TENT);
         this.colour = colour;
         this.sleepingCapacity = sleepingCapacity;
         this.numberOfDoors = numberOfDoors;
 
+    }
+
+    @Override
+    public String getHeaders() {
+        return super.getHeaders() + "colour," + "sleepingCapacity," + "numberOfDoors";
+    }
+
+    @Override
+    public String toSCV() {
+        return super.toSCV() + colour + "," + sleepingCapacity + "," + numberOfDoors;
     }
 
     public String toString() {

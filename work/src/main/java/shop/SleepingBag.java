@@ -7,8 +7,8 @@ public final class SleepingBag extends Stuff {
     private double volume;
     private int temperatureRating;
 
-    public SleepingBag(final String name, final String producer, final int weight, final String material, final double price, final String size, final String colour, final double volume, final int temperatureRating) {
-        super(name, producer, weight, material, price, StuffType.SLEEPINGBAG);
+    public SleepingBag(final Integer id, final String name, final String producer, final int weight, final String material, final double price, final String size, final String colour, final double volume, final int temperatureRating) {
+        super(id, name, producer, weight, material, price, StuffType.SLEEPINGBAG);
         this.size = size;
         this.colour = colour;
         this.volume = volume;
@@ -16,6 +16,16 @@ public final class SleepingBag extends Stuff {
 
 
 
+    }
+
+    @Override
+    public String getHeaders() {
+        return super.getHeaders() + "size," + "colour," + "volume," + "temperatureRating";
+    }
+
+    @Override
+    public String toSCV() {
+        return super.toSCV() + size + "," + colour + "," + volume + "," + temperatureRating;
     }
 
     public String toString() {
